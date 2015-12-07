@@ -1,14 +1,9 @@
-/*
-TODO:
-1. Display desired minutes and seconds on resets and page load.
-
-*/
-
 // running or not ?
 var state = false;
 var breakT;
-// make setIntervals global and accesible
-var workTime, breakTime, timer;
+
+// make setInterval global
+var timer;
 
 // count down until that time
 function countDown(minutes, startTime) {
@@ -49,38 +44,15 @@ function run(id, minutes){
   },1000);
 }
 
-function runPomodoro(idWork, workMinutes){
-  var startTime = new Date();
-  var displayWorkTimer = document.getElementById(idWork);
 
-  workTimer = setInterval(function() {
-    var time = countDown(workMinutes, startTime);
-    displayWorkTimer.innerHTML = 'minutes: ' + time.minutes + '<br>' +
-                                 'seconds: ' + time.seconds;
-    if(time.left <= 0){
-      clearInterval(workTimer);
-      state = false;
-    }
-  },1000);
-}
-
-function runBreak(idBreak, breakMinutes){
-  var startTime = new Date();
-  var displayBreakTimer = document.getElementById(idBreak);
-
-  breakTimer = setInterval(function() {
-    var time = countDown(1 + breakMinutes);
-    displayBreakTimer.innerHTML = 'minutes: ' + time.minutes + '<br>' +
-                                  'seconds: ' + time.seconds;
-    if(time.left <= 0){
-      clearInterval(breakTimer);
-    }
-  },1000);
-}
 
 document.getElementById('run').addEventListener("click",function(){
   var pomodoroT = 1;
   breakT = 1;
+
+  document.getElementById("work").innerHTML = 'minutes: ' + pomodoroT + '<br>' + 'seconds: 00';
+  document.getElementById("break").innerHTML = 'minutes: ' + breakT + '<br>' + 'seconds: 00';
+
 
   if(state === false){
     state = true;
@@ -88,5 +60,7 @@ document.getElementById('run').addEventListener("click",function(){
   } else {
     state = false;
     clearInterval(timer);
+    document.getElementById("work").innerHTML = 'minutes: ' + pomodoroT + '<br>' + 'seconds: 00';
+    document.getElementById("break").innerHTML = 'minutes: ' + breakT + '<br>' + 'seconds: 00';
   }
 });
