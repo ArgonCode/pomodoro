@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
 
   <!-- styles -->
+  <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
 
@@ -33,35 +34,33 @@
 
  </head>
  <body>
-  <div class="container">
-
-    <div class="flex-container home">
-      <!-- Work -->
-      <div class="flex-item">
-        <p>
-          <span id="work-min"></span> : <span id="work-sec"></span>
-        </p>
-      </div>
-
-
-      <!-- Break -->
-      <div class="flex-item">
-        <p>
-          <span id="break-min"></span> : <span id="break-sec"></span>
-        </p>
-      </div>
-    </div><!-- /.flex-container -->
-
-    <button id="run" type="button" name="button">Run</button>
-
-    <button id="plus-pomodoro" type="button" name="button">plus-pomodoro</button>
-    <button id="minus-pomodoro" type="button" name="button">minus-pomodoro</button>
-
-    <button id="plus-break" type="button" name="button">plus-break</button>
-    <button id="minus-break" type="button" name="button">minus-break</button>
-
-
-  </div><!-- /.container -->
+  <div class="flex-container work">
+    <!-- Work -->
+    <div class="flex-item">
+      <button class="btn" id="minus-pomodoro">-</button>
+    </div>
+    <div class="flex-item time">
+      <p><span id="work-min"></span> : <span id="work-sec"></span></p>
+    </div>
+    <div class="flex-item">
+      <button class="btn" id="plus-pomodoro">+</button>
+    </div>
+  </div>
+  <div class="flex-container break">
+    <!-- Break -->
+    <div class="flex-item">
+      <button class="btn" id="minus-break">-</button>
+    </div>
+    <div class="flex-item time">
+      <p><span id="break-min"></span> : <span id="break-sec"></span></p>
+    </div>
+    <div class="flex-item">
+      <button class="btn" id="plus-break">+</button>
+    </div>
+  </div><!-- /.flex-container -->
+  <div class="flex-container">
+    <button class="btn" id="run">Work Time!</button>
+  </div>
 
 
     <!-- scripts -->

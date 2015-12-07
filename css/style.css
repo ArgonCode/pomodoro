@@ -1,3 +1,7 @@
+* {
+  font-family: 'Aclonica', sans-serif;
+}
+
 html {
   background: url(../img/timer-alpha.png) no-repeat bottom right fixed;
   -webkit-background-size: cover;
@@ -6,12 +10,11 @@ html {
   background-size: cover;
 }
 
-body {
-  background-color: #fff;
+.work {
+  padding-top: 10%;
 }
 
 .flex-container {
-  padding: 10px;
   margin: 10px;
   list-style: none;
   display: -webkit-box;
@@ -19,27 +22,38 @@ body {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  -webkit-flex-flow: row wrap;
-  justify-content: space-around;
+  -webkit-flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .flex-item {
   background: red;
   padding: 12px;
   margin: 10px;
-  color: #F9F3F1;
+  color: #e5e3e3;
   font-weight: bold;
   font-size: 2em;
   text-align: center;
 }
 
-.home {
-  flex-direction: column;
+.time {
+  width: 150px;
 }
 
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff0707+0,ededed+76 */
-background: rgb(255,7,7); /* Old browsers */
-background: -moz-linear-gradient(top, rgba(255,7,7,1) 0%, rgba(237,237,237,1) 76%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top, rgba(255,7,7,1) 0%,rgba(237,237,237,1) 76%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom, rgba(255,7,7,1) 0%,rgba(237,237,237,1) 76%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0707', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+.btn {
+  padding:3px;
+  width: 50px;
+  background: transparent;
+  border: none;
+}
+
+#run {
+  padding: 18px;
+  width: 140px;
+  background: #e5e3e3;
+  color: red;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+}
