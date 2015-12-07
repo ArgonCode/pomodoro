@@ -1,15 +1,14 @@
-// set time in the future
-var timeNow = new Date();
+// running or not ?
 var state = false;
-
+var breakT;
 // make setIntervals global and accesible
-var workTime, breakTime;
+var workTime, breakTime, timer;
 
 // count down until that time
-function countDown(minutes) {
+function countDown(minutes, startTime) {
   var timerMinutes = minutes;
   var timerMiliSec = timerMinutes * 60000;
-  var timerUTC = Date.parse(timeNow) + timerMiliSec;
+  var timerUTC = Date.parse(startTime) + timerMiliSec;
 
   var timeLeft = (timerUTC - Date.parse(new Date())) / 1000;
   var timeLeftMinutes = Math.floor(timeLeft / 60);
@@ -21,21 +20,42 @@ function countDown(minutes) {
   };
 }
 
-function runPomodoro(idWork, workMinutes){
-  var displayWorkTimer = document.getElementById(idWork);
+function run(id, minutes){
+  var startTime = new Date();
+  var displayTimer = document.getElementById(id);
 
-  workTimer = setInterval(function() {
-    var time = countDown(workMinutes);
-    displayWorkTimer.innerHTML = 'minutes: ' + time.minutes + '<br>' +
-                                 'seconds: ' + time.seconds;
+  timer = setInterval(function() {
+    var time = countDown(minutes, startTime);
+    displayTimer.innerHTML = 'minutes: ' + time.minutes + '<br>' +
+                             'seconds: ' + time.seconds;
     if(time.left <= 0){
-      clearInterval(workTimer);
+      clearInterval(timer);
+      if(id === "work") {
+        run("break", breakT);
+      } else {
+        run("work", minutes);
+      }
     }
   },1000);
 }
 
+function runPomodoro(idWork, workMinutes){
+  var startTime = new Date();
+  var displayWorkTimer = document.getElementById(idWork);
+
+  workTimer = setInterval(function() {
+    var time = countDown(workMinutes, startTime);
+    displayWorkTimer.innerHTML = 'minutes: ' + time.minutes + '<br>' +
+                                 'seconds: ' + time.seconds;
+    if(time.left <= 0){
+      clearInterval(workTimer);
+      state = false;
+    }
+  },1000);
+}
 
 function runBreak(idBreak, breakMinutes){
+  var startTime = new Date();
   var displayBreakTimer = document.getElementById(idBreak);
 
   breakTimer = setInterval(function() {
@@ -48,16 +68,15 @@ function runBreak(idBreak, breakMinutes){
   },1000);
 }
 
-// document.getElementById('run').onclick = function(){
-//   runPomodoro("work", 1);
-// };
-
 document.getElementById('run').addEventListener("click",function(){
+  var pomodoroT = 1;
+  breakT = 1;
+
   if(state === false){
-    runPomodoro("work", 1);
     state = true;
+    run("work", pomodoroT);
   } else {
-    clearInterval(workTimer);
     state = false;
+    clearInterval(timer);
   }
 });
