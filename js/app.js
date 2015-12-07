@@ -1,8 +1,11 @@
 // running or not ?
 var state = false;
-var breakT;
+var breakT = 5;
+var pomodoroT = 25;
 
-// make setInterval global
+
+
+// make timer = setInterval global
 var timer;
 
 // count down until that time
@@ -47,12 +50,8 @@ function run(id, minutes){
 
 
 document.getElementById('run').addEventListener("click",function(){
-  var pomodoroT = 1;
-  breakT = 1;
-
   document.getElementById("work").innerHTML = 'minutes: ' + pomodoroT + '<br>' + 'seconds: 00';
   document.getElementById("break").innerHTML = 'minutes: ' + breakT + '<br>' + 'seconds: 00';
-
 
   if(state === false){
     state = true;
@@ -63,4 +62,20 @@ document.getElementById('run').addEventListener("click",function(){
     document.getElementById("work").innerHTML = 'minutes: ' + pomodoroT + '<br>' + 'seconds: 00';
     document.getElementById("break").innerHTML = 'minutes: ' + breakT + '<br>' + 'seconds: 00';
   }
+});
+
+document.getElementById('plus-pomodoro').addEventListener("click",function(){
+  pomodoroT++;
+});
+
+document.getElementById('minus-pomodoro').addEventListener("click",function(){
+  pomodoroT--;
+});
+
+document.getElementById('plus-break').addEventListener("click",function(){
+  breakT++;
+});
+
+document.getElementById('minus-break').addEventListener("click",function(){
+  breakT--;
 });
