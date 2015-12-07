@@ -1,3 +1,9 @@
+/*
+TODO:
+1. Display desired minutes and seconds on resets and page load.
+
+*/
+
 // running or not ?
 var state = false;
 var breakT;
@@ -31,8 +37,12 @@ function run(id, minutes){
     if(time.left <= 0){
       clearInterval(timer);
       if(id === "work") {
+        displayTimer.innerHTML = 'minutes: ' + minutes + '<br>' +
+                                 'seconds: 00';
         run("break", breakT);
       } else {
+        displayTimer.innerHTML = 'minutes: ' + breakT + '<br>' +
+                                 'seconds: 00';
         run("work", minutes);
       }
     }
