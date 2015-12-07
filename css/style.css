@@ -2,12 +2,14 @@
   font-family: 'Aclonica', sans-serif;
 }
 
-html {
-  background: url(../img/timer-alpha.png) no-repeat bottom right fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+@media all and (min-width: 420px) {
+  html {
+    background: url(../img/timer-alpha.png) no-repeat bottom right fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
 }
 
 .work {
@@ -33,7 +35,7 @@ html {
   margin: 10px;
   color: #e5e3e3;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 1.6em;
   text-align: center;
 }
 
