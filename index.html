@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
 
   <!-- styles -->
-  <link rel="stylesheet" href="css/materialize.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
 
   <!-- icons / favicons-->
@@ -37,11 +37,17 @@
 
     <div class="flex-container home">
       <!-- Work -->
-      <div class="flex-item" id="work">
+      <div class="flex-item">
+        <p>
+          <span id="work-min"></span> : <span id="work-sec"></span>
+        </p>
       </div>
 
       <!-- Break -->
-      <div class="flex-item" id="break">
+      <div class="flex-item">
+        <p>
+          <span id="break-min"></span> : <span id="break-sec"></span>
+        </p>
       </div>
     </div><!-- /.flex-container -->
 
@@ -58,9 +64,6 @@
 
 
     <!-- scripts -->
-    <script src="js/jquery-2.1.4.min.js"></script>
-    <script src="js/materialize.min.js"></script>
-    <script src="js/moment.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

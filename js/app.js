@@ -1,14 +1,20 @@
-// running or not ?
-var state = false;
+var state = false; // running or not ?
 var breakT = 5;
 var pomodoroT = 25;
-
-
-
-// make timer = setInterval global
 var timer;
 
-// count down until that time
+// Update HTML
+function updatePomodoro(min, sec){
+  document.getElementById("work-min").innerHTML = min;
+  document.getElementById("work-sec").innerHTML = sec;
+}
+
+function updateBreak(min, sec){
+    document.getElementById("break-min").innerHTML = min;
+    document.getElementById("break-sec").innerHTML = sec;
+}
+
+//  Timer functions
 function countDown(minutes, startTime) {
   var timerMinutes = minutes;
   var timerMiliSec = timerMinutes * 60000;
@@ -26,32 +32,32 @@ function countDown(minutes, startTime) {
 
 function run(id, minutes){
   var startTime = new Date();
-  var displayTimer = document.getElementById(id);
 
   timer = setInterval(function() {
     var time = countDown(minutes, startTime);
-    displayTimer.innerHTML = 'minutes: ' + time.minutes + '<br>' +
-                             'seconds: ' + time.seconds;
+    if(id === "work"){
+      updatePomodoro(time.minutes, time.seconds);
+    } else {
+      updateBreak(time.minutes, time.seconds);
+    }
+
     if(time.left <= 0){
       clearInterval(timer);
       if(id === "work") {
-        displayTimer.innerHTML = 'minutes: ' + minutes + '<br>' +
-                                 'seconds: 00';
+        updatePomodoro(pomodoroT, "00");
         run("break", breakT);
       } else {
-        displayTimer.innerHTML = 'minutes: ' + breakT + '<br>' +
-                                 'seconds: 00';
-        run("work", minutes);
+        updateBreak(breakT, "00");
+        run("work", pomodoroT);
       }
     }
   },1000);
 }
 
-
-
+// Event Listeners
 document.getElementById('run').addEventListener("click",function(){
-  document.getElementById("work").innerHTML = 'minutes: ' + pomodoroT + '<br>' + 'seconds: 00';
-  document.getElementById("break").innerHTML = 'minutes: ' + breakT + '<br>' + 'seconds: 00';
+  updatePomodoro(pomodoroT, "00");
+  updateBreak(breakT, "00");
 
   if(state === false){
     state = true;
@@ -59,23 +65,39 @@ document.getElementById('run').addEventListener("click",function(){
   } else {
     state = false;
     clearInterval(timer);
-    document.getElementById("work").innerHTML = 'minutes: ' + pomodoroT + '<br>' + 'seconds: 00';
-    document.getElementById("break").innerHTML = 'minutes: ' + breakT + '<br>' + 'seconds: 00';
+    updatePomodoro(pomodoroT, "00");
+    updateBreak(breakT, "00");
   }
 });
 
 document.getElementById('plus-pomodoro').addEventListener("click",function(){
   pomodoroT++;
+  updatePomodoro(pomodoroT, "00");
 });
 
 document.getElementById('minus-pomodoro').addEventListener("click",function(){
-  pomodoroT--;
+  if(pomodoroT > 0) {
+    pomodoroT--;
+  }else{
+    pomodoroT = 0;
+  }
+  updatePomodoro(pomodoroT, "00");
 });
 
 document.getElementById('plus-break').addEventListener("click",function(){
   breakT++;
+  updateBreak(breakT, "00");
 });
 
 document.getElementById('minus-break').addEventListener("click",function(){
-  breakT--;
+  if(breakT > 0) {
+    breakT--;
+  }else{
+    breakT = 0;
+  }
+  updateBreak(breakT, "00");
 });
+
+// Update time on page load
+updateBreak(breakT, "00");
+updatePomodoro(pomodoroT, "00");
