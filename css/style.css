@@ -1,3 +1,11 @@
+html {
+  background: url(../img/timer-alpha.png) no-repeat bottom right fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
   background-color: #fff;
 }
@@ -16,7 +24,7 @@ body {
 }
 
 .flex-item {
-  background: tomato;
+  background: red;
   padding: 12px;
   margin: 10px;
   color: #F9F3F1;
@@ -28,3 +36,10 @@ body {
 .home {
   flex-direction: column;
 }
+
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff0707+0,ededed+76 */
+background: rgb(255,7,7); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(255,7,7,1) 0%, rgba(237,237,237,1) 76%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(255,7,7,1) 0%,rgba(237,237,237,1) 76%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(255,7,7,1) 0%,rgba(237,237,237,1) 76%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0707', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
