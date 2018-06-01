@@ -62,11 +62,13 @@ document.getElementById('run').addEventListener("click",function(){
   if(state === false){
     state = true;
     run("work", pomodoroT);
+	document.getElementById('run').textContent = "Break Time!";
   } else {
     state = false;
     clearInterval(timer);
     updatePomodoro(pomodoroT, "00");
     updateBreak(breakT, "00");
+	document.getElementById('run').textContent = "Work Time!";
   }
 });
 
